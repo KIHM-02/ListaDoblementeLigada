@@ -28,9 +28,7 @@ public class Lista
         
         if(inicioIsEmpty())
         {
-            nuevo = new Nodo(null, dato, null);                                 //apuntamos a nulo de ambos lados
-            inicio = nuevo;
-            System.out.println("Se agrego "+dato+" como primer elemento a la lista");
+            firstData(dato);
         }
         else
         {
@@ -55,6 +53,52 @@ public class Lista
         }
     }
     
+    //Insercion al final
+    
+    public void last(int dato)
+    {
+        Nodo temporal, nuevo;
+        
+        if(inicioIsEmpty())
+        {
+            firstData(dato);
+        }
+        else
+        {
+            temporal = inicio;
+            
+            while(temporal.getSiguiente() != null)
+            {
+                temporal = temporal.getSiguiente();
+            }
+            
+            nuevo = new Nodo(temporal, dato, null);
+            temporal.setSiguiente(nuevo);
+            System.out.println("Se agrego el dato "+dato+" al final de la lista");
+        }
+    }
+    
+    public void deleteLast()
+    {
+        Nodo temporal;
+        
+        if(inicioIsEmpty())
+        {
+            System.out.println("La lista esta vacia");
+        }
+        else
+        {
+            temporal = inicio;
+            
+            while(temporal.getSiguiente() != null)
+                temporal = temporal.getSiguiente();
+            
+            temporal = temporal.getPrevio();
+            temporal.setSiguiente(null);
+            System.out.println("Se ha eliminado el ultimo dato");
+            
+        }
+    }
     
     //Mostrar datos
     
@@ -106,5 +150,12 @@ public class Lista
            
             System.out.println("\n");
         }
+    }
+    
+    public void firstData(int dato)
+    {
+        Nodo nuevo = new Nodo(null, dato, null);                                //apuntamos a nulo de ambos lados
+        inicio = nuevo;
+        System.out.println("Se agrego "+dato+" como primer elemento a la lista");
     }
 }
