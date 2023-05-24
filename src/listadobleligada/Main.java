@@ -27,14 +27,16 @@ public class Main
         */
         
         lista.last(1);
-        lista.last(2);
-        lista.last(3);
+        lista.last(5);
+        lista.last(5);
         
         lista.showBeginToLast();
         
         lista.deleteMiddle();
         
         lista.showBeginToLast();
+        
+        lista.findData(5);
         
         
     }

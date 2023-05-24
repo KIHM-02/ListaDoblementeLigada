@@ -147,11 +147,13 @@ public class Lista
             for(int iterador = 1; iterador < counter; iterador++)
                 temporal = temporal.getSiguiente();
             
-            auxiliar = temporal.getSiguiente();
+            auxiliar = temporal.getSiguiente();                                 //auxiliar me ayuda para hacer un metodo burbuja y no perder el dato
             temporal.setSiguiente(auxiliar.getSiguiente());
             
             temporal = auxiliar.getSiguiente();
             temporal.setPrevio(auxiliar.getPrevio());
+            
+            auxiliar = null;
             
             System.out.println("Se ha eliminado el dato de en medio");   
         }
@@ -208,6 +210,40 @@ public class Lista
             System.out.println("\n");
         }
     }
+    
+     public void findData(int dato)
+    {
+        Nodo temporal;
+        int posicion = 1;
+        
+        if(inicioIsEmpty())
+        {
+            System.out.println("La lista esta vacia");
+        }
+        else
+        {
+            temporal = inicio;
+            
+            while(temporal != null)
+            {
+                if(temporal.getDato() == dato)
+                { 
+                    System.out.println("La posicion del dato "+dato+" es "+posicion);
+                    temporal = null;
+                }
+                else
+                {
+                    posicion++;
+                    temporal = temporal.getSiguiente();
+                    if(temporal == null)
+                        System.out.println("No se encontro el elemento");
+                }
+            }
+        }
+        
+    }
+    
+    //Agregados 
     
     public void firstData(int dato)
     {
