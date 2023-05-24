@@ -100,6 +100,63 @@ public class Lista
         }
     }
     
+    //Insercion al medio
+    
+    public void middle(int dato)
+    {
+        Nodo temporal, nuevo;
+        int counter;
+        
+        counter = objects_in_list();
+        
+        if(counter < 3)
+        {
+            System.out.println("Se necesitan "+(3 - counter)+" elementos en la lista");
+        }
+        else
+        {
+            temporal = inicio;
+            
+            counter = counter/2;
+            
+            for(int iterador = 1; iterador < counter; iterador++)
+                temporal = temporal.getSiguiente();
+            
+            nuevo = new Nodo(temporal, dato, temporal.getSiguiente());
+            temporal.setSiguiente(nuevo);
+            System.out.println("Se ha agregado a la mitad el dato "+dato);
+        }
+    }
+    
+    public void deleteMiddle()
+    {
+        int counter;
+        Nodo temporal, auxiliar;
+        
+        counter = objects_in_list();
+        
+        if(counter < 3)
+        {
+            System.out.println("No puedo borrar datos al medio por el momento");
+        }
+        else
+        {
+            temporal = inicio;
+            counter = counter/2;
+            
+            for(int iterador = 1; iterador < counter; iterador++)
+                temporal = temporal.getSiguiente();
+            
+            auxiliar = temporal.getSiguiente();
+            temporal.setSiguiente(auxiliar.getSiguiente());
+            
+            temporal = auxiliar.getSiguiente();
+            temporal.setPrevio(auxiliar.getPrevio());
+            
+            System.out.println("Se ha eliminado el dato de en medio");   
+        }
+    }
+    
     //Mostrar datos
     
     public void showBeginToLast()
@@ -157,5 +214,19 @@ public class Lista
         Nodo nuevo = new Nodo(null, dato, null);                                //apuntamos a nulo de ambos lados
         inicio = nuevo;
         System.out.println("Se agrego "+dato+" como primer elemento a la lista");
+    }
+    
+    public int objects_in_list()
+    {
+        Nodo temporal = inicio;
+        int counter = 0;
+        
+        while(temporal != null)
+        {
+            counter++;
+            temporal = temporal.getSiguiente();
+        }
+        
+        return counter;
     }
 }

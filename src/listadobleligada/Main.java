@@ -32,15 +32,7 @@ public class Main
         
         lista.showBeginToLast();
         
-        lista.begin(0);
-        
-        lista.showBeginToLast();
-        
-        lista.last(4);
-        
-        lista.showBeginToLast();
-        
-        lista.deleteLast();
+        lista.deleteMiddle();
         
         lista.showBeginToLast();
         
